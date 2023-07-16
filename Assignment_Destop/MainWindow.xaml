@@ -1,0 +1,294 @@
+﻿<Window
+    x:Class="Assignment_Destop.MainWindow"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:local="clr-namespace:Assignment_Destop"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    Title="Students Details"
+    MaxWidth="500"
+    MaxHeight="550"
+    AllowsTransparency="True"
+    Background="Transparent"
+    WindowStartupLocation="CenterScreen"
+    WindowStyle="None"
+    mc:Ignorable="d">
+
+    <Window.DataContext>
+        <local:CollectionWindow />
+    </Window.DataContext>
+
+
+
+    <StackPanel
+        Width="519"
+        Height="540"
+        HorizontalAlignment="Center"
+        VerticalAlignment="Center">
+        <StackPanel.Background>
+            <LinearGradientBrush StartPoint="0 0" EndPoint="1 1">
+                <GradientStop Offset="0" Color="Black" />
+                <GradientStop Offset="1" Color="#0D68A6" />
+            </LinearGradientBrush>
+        </StackPanel.Background>
+        <Canvas>
+            <Polygon Fill="#216491" Points="0 20 230 150 0 250" />
+            <Polygon Fill="#216491" Points="150 460 300 450 170 290" />
+            <Ellipse
+                Width="51"
+                Height="70"
+                Margin="50,250,0,0"
+                Fill="#216491" />
+            <Ellipse
+                Width="41"
+                Height="50"
+                Margin="100,350,0,0"
+                Fill="#216491" />
+            <Polygon Fill="#216491" Points="15 150 500 450 250 250" />
+            <Polygon Fill="#216491" Points="455 59 150 450 370 290" />
+            <Ellipse
+                Width="41"
+                Height="50"
+                Margin="200,50,0,0"
+                Fill="#216491" />
+            <Ellipse
+                Width="31"
+                Height="30"
+                Margin="450,50,0,0"
+                Fill="#216491" />
+            <Ellipse
+                Width="41"
+                Height="50"
+                Margin="450,150,0,0"
+                Fill="#216491" />
+            <Ellipse
+                Canvas.Left="450"
+                Width="41"
+                Height="20"
+                HorizontalAlignment="Left"
+                VerticalAlignment="Center"
+                Fill="#216491" />
+            <Ellipse
+                Width="31"
+                Height="30"
+                Margin="40,420,0,0"
+                Fill="#216491" />
+        </Canvas>
+        <Button
+            x:Name="btnClose"
+            Width="30"
+            HorizontalAlignment="Right"
+            Click="ShutDown_Click"
+            Content="X"
+            Cursor="Hand"
+            Style="{StaticResource ButtonClose}" />
+        <Image Width="86"
+               Height="80"
+               Margin="20 -20 0 -10"
+                Source="Images\icons\logo_seo.png" HorizontalAlignment="Left" />
+        <TextBlock Text="International Taste Institute"
+                   Foreground="White"
+                   Margin="120 -45 0 0"
+                   FontFamily="algerian"
+                   FontSize="22" Width="396"/>
+        <Grid>
+            <Separator
+                   Height="10"
+                Margin="10"
+                   Background="white"/>
+        </Grid>
+        
+
+        <StackPanel
+            Width="400"
+            Height="40"
+            HorizontalAlignment="Left"
+            Background="Transparent"
+            Orientation="Vertical">
+
+
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                    <ColumnDefinition Width="2*" />
+                    <ColumnDefinition Width="1*" />
+                </Grid.ColumnDefinitions>
+                <Border Grid.Column="0">
+                    <TextBlock
+                        Width="80"
+                        Height="16"
+                        Margin="40,10,-30,0"
+                        Style="{StaticResource NormalText}"
+                        Text="FirstName"
+                        TextAlignment="Center" />
+                </Border>
+                <Border Grid.Column="1">
+                    <TextBlock
+                        Width="80"
+                        Height="16"
+                        Margin="10,10,-10,0"
+                        Style="{StaticResource NormalText}"
+                        Text="LastName"
+                        TextAlignment="Center" />
+                </Border>
+                <Border Grid.Column="2">
+                    <TextBlock
+                        Width="60"
+                        Height="16"
+                        Margin="-20,10,0,0"
+                        Style="{StaticResource NormalText}"
+                        Text="Age"
+                        TextAlignment="Center" />
+                </Border>
+                <Border Grid.Column="3">
+                    <TextBlock
+                        Width="100"
+                        Height="16"
+                        Margin="-40,10,0,0"
+                        Style="{StaticResource NormalText}"
+                        Text="Date Of Birth"
+                        TextAlignment="Center" />
+                </Border>
+                <Border Grid.Column="4">
+                    <TextBlock
+                        Width="50"
+                        Height="16"
+                        Margin="-50,10,0,0"
+                        Style="{StaticResource NormalText}"
+                        Text="GPA"
+                        TextAlignment="Center" />
+                </Border>
+            </Grid>
+
+        </StackPanel>
+
+        <ListView
+            Width="500"
+            Height="327"
+            ItemsSource="{Binding Students, UpdateSourceTrigger=PropertyChanged}"
+            SelectedItem="{Binding Edit_student, UpdateSourceTrigger=PropertyChanged}"
+            SelectionChanged="Listview_SelectionChanged">
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Border
+                        Width="400"
+                        Margin="10,0,10,0"
+                        Padding="5"
+                        HorizontalAlignment="Center"
+                        Background="LightBlue"
+                        BorderBrush="Black"
+                        BorderThickness="2"
+                        CornerRadius="5">
+
+
+
+
+                        <StackPanel
+                            Grid.ColumnSpan="5"
+                            Background="LightBlue"
+                            Orientation="Horizontal">
+                            <Image Width="30" Source="{Binding ImageURL}" />
+                            <Grid>
+                                <Grid.ColumnDefinitions>
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                    <ColumnDefinition Width="2*" />
+                                    <ColumnDefinition Width="1*" />
+                                </Grid.ColumnDefinitions>
+                                <Border Grid.Column="0">
+                                    <TextBlock
+                                        Width="50"
+                                        Margin="5,10,10,10"
+                                        Background="LightBlue"
+                                        Text="{Binding FirstName, UpdateSourceTrigger=PropertyChanged}"
+                                        TextAlignment="Left" />
+                                </Border>
+                                <Border Grid.Column="1">
+                                    <TextBlock
+                                        Width="50"
+                                        Margin="15,10,10,10"
+                                        Background="LightBlue"
+                                        Text="{Binding LastName, UpdateSourceTrigger=PropertyChanged}"
+                                        TextAlignment="Left" />
+                                </Border>
+                                <Border Grid.Column="2">
+                                    <TextBlock
+                                        Width="20"
+                                        Margin="10,10,10,10"
+                                        Background="LightBlue"
+                                        Text="{Binding Age, UpdateSourceTrigger=PropertyChanged}"
+                                        TextAlignment="Left" />
+                                </Border>
+                                <Border Grid.Column="3">
+                                    <TextBlock
+                                        Width="80"
+                                        Margin="10,10,10,10"
+                                        Background="LightBlue"
+                                        Text="{Binding DateOfBirth, UpdateSourceTrigger=PropertyChanged}"
+                                        TextAlignment="Left" />
+                                </Border>
+                                <Border Grid.Column="4">
+                                    <TextBlock
+                                        Margin="5,10,10,10"
+                                        Background="LightBlue"
+                                        Text="{Binding GPA, UpdateSourceTrigger=PropertyChanged}" />
+                                </Border>
+                            </Grid>
+                        </StackPanel>
+
+
+                    </Border>
+
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+
+
+        <StackPanel
+            Width="500"
+            Height="65"
+            Orientation="Horizontal">
+
+            <Button
+                Width="120"
+                Height="41"
+                Margin="20,0,0,0"
+                Padding="10"
+                Click="Button_Click"
+                Command="{Binding AddStudentCommand}"
+                Content="Add Student"
+                FontSize="12"
+                Style="{StaticResource SAVE}" />
+
+
+            <Button
+                Width="120"
+                Height="41"
+                Margin="50,0,-5,0"
+                Padding="10"
+                Command="{Binding RemoveStudentCommand}"
+                Content="Delete Student"
+                FontSize="12"
+                Style="{StaticResource SAVE}" />
+
+            <Button
+                Width="120"
+                Height="41"
+                Margin="53,0,0,0"
+                Padding="10"
+                Command="{Binding EditStudentCommand}"
+                Content="Edit Student"
+                FontSize="12"
+                Style="{StaticResource SAVE}" />
+        </StackPanel>
+        <Image Height="166" Source="/Images/icons/logo_seo.png" Stretch="Fill" Width="372"/>
+
+
+    </StackPanel>
+
+</Window>
